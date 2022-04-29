@@ -19,13 +19,13 @@ public class BooksController {
     @Autowired
     private BookService bookService;
 
-    @GetMapping("/getbooks")
+    @GetMapping("booksapi/books/getbooklist")
     public List<Book> listBooks() {
         return bookService.getBooks();
     }
 
     //Internal Testing
-    @PostMapping("/addbook")
+    @PostMapping("booksapi/books/addbook")
     public ResponseEntity<Book> addBook(@RequestBody Book book) {
         try {
             bookService.save(book);

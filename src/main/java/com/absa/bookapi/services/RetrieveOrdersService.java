@@ -46,6 +46,7 @@ public class RetrieveOrdersService {
             currentOrder.setOrderDate(order.getOrderDate());
             currentOrder.setCustomerId(order.getCustomerId());
             currentOrder.setBooks(bookList);
+
             if (order.getTotal() != null)
                 currentOrder.setTotal(order.getTotal());
             ordersList.add(currentOrder);

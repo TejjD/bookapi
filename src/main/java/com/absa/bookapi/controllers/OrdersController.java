@@ -24,13 +24,13 @@ public class OrdersController {
     @Autowired
     private RetrieveOrdersService retrieveOrdersService;
 
-    @GetMapping("/getorders")
+    @GetMapping("booksapi/orders/getorderslist")
     public List<RetrieveOrder> getOrderItems() {
         return retrieveOrdersService.getAllOrders();
     }
 
 
-    @PostMapping("/placeorder")
+    @PostMapping("booksapi/orders/placeorder")
     public ResponseEntity<CreateOrder> placeOrder(@RequestBody CreateOrder order) {
         try {
             return orderService.createOrder(order);
