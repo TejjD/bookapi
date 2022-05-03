@@ -52,20 +52,19 @@ public class OrderService {
         Order order = new Order();
         order.setOrderDate(newOrder.getOrderDate());
         order.setCustomerId(newOrder.getCustomerId());
-        placeOrder(order);
+        int id = placeOrder(order);
 
         for (Map.Entry thisBook : newOrder.getBooks().entrySet()) {
             OrderItem orderItem = new OrderItem();
             orderItem.setOrderId(order);
-            Book book = bookService.getBookById((Integer) thisBook.getKey());
+            Book book = bookService.getBooksByIsbn13(thisBook.getKey().toString());
             orderItem.setBook(book);
             orderItem.setQuantity((Integer) thisBook.getValue());
             total += book.getPrice() * (Integer) thisBook.getValue();
             orderItemService.saveOrderItem(orderItem);
         }
 
-        updateOrder(newOrder.getId(), total);
-
+        updateOrder(id, total);
         return new ResponseEntity<>(newOrder, HttpStatus.OK);
     }
 }

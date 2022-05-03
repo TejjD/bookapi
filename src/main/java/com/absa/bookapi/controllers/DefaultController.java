@@ -11,9 +11,21 @@ import java.net.URI;
 public class DefaultController {
 
     @GetMapping("/")
-    ResponseEntity<Void> redirect() {
+    ResponseEntity<Void> redirectGui() {
+        return ResponseEntity.status(HttpStatus.FOUND)
+                .location(URI.create("http://localhost:8080/home/"))
+                .build();
+    }
+
+    @GetMapping("/swagger")
+    ResponseEntity<Void> redirectSwagger() {
         return ResponseEntity.status(HttpStatus.FOUND)
                 .location(URI.create("http://localhost:8080/swagger-ui.html#/"))
                 .build();
+    }
+
+    @GetMapping("/zen")
+    ResponseEntity<Void> healthCheck() {
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

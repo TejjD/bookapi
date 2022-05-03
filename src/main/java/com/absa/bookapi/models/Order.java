@@ -3,7 +3,7 @@ package com.absa.bookapi.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
@@ -15,7 +15,7 @@ public class Order {
     private Integer id;
 
     @Column(name = "order_date")
-    private LocalDate orderDate;
+    private Date orderDate;
 
     @Column(name = "customer_id")
     private Integer customerId;
@@ -39,11 +39,11 @@ public class Order {
         this.id = id;
     }
 
-    public LocalDate getOrderDate() {
+    public Date getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(LocalDate orderDate) {
+    public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
     }
 

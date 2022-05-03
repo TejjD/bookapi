@@ -1,22 +1,22 @@
 package com.absa.bookapi.models;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.Map;
 
 public class CreateOrder {
     private Integer id;
 
-    private LocalDate orderDate;
+    private Date orderDate;
 
     private Integer customerId;
 
-    private Map<Integer, Integer> books;
+    private Map<String, Integer> books;
 
-    public Map<Integer, Integer> getBooks() {
+    public Map<String, Integer> getBooks() {
         return books;
     }
 
-    public void setBooks(Map<Integer, Integer> books) {
+    public void setBooks(Map<String, Integer> books) {
         this.books = books;
     }
 
@@ -28,11 +28,11 @@ public class CreateOrder {
         this.id = id;
     }
 
-    public LocalDate getOrderDate() {
+    public Date getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(LocalDate orderDate) {
+    public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
     }
 
