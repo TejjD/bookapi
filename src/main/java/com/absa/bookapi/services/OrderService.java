@@ -45,25 +45,26 @@ public class OrderService {
         orderRepository.updateOrderTotal(orderId, total);
     }
 
-    public ResponseEntity<CreateOrder> createOrder(CreateOrder createOrder) {
-        float total = 0;
-        Order newOrder = new Order();
-        newOrder.setOrderDate(createOrder.getOrderDate());
-        newOrder.setCustomerId(createOrder.getCustomerId());
-        placeOrder(newOrder);
+    public ResponseEntity<CreateOrder> createOrder(CreateOrder newOrder) {
 
-        for (Map.Entry thisBook : createOrder.getBooks().entrySet()) {
+        float total = 0;
+
+        Order order = new Order();
+        order.setOrderDate(newOrder.getOrderDate());
+        order.setCustomerId(newOrder.getCustomerId());
+        int id = placeOrder(order);
+
+        for (Map.Entry thisBook : newOrder.getBooks().entrySet()) {
             OrderItem orderItem = new OrderItem();
-            orderItem.setOrderId(newOrder);
-            Book book = bookService.getBookById((Integer) thisBook.getKey());
+            orderItem.setOrderId(order);
+            Book book = bookService.getBooksByIsbn13(thisBook.getKey().toString());
             orderItem.setBook(book);
             orderItem.setQuantity((Integer) thisBook.getValue());
             total += book.getPrice() * (Integer) thisBook.getValue();
             orderItemService.saveOrderItem(orderItem);
         }
 
-        updateOrder(newOrder.getId(), total);
-
-        return new ResponseEntity<>(createOrder, HttpStatus.OK);
+        updateOrder(id, total);
+        return new ResponseEntity<>(newOrder, HttpStatus.OK);
     }
 }

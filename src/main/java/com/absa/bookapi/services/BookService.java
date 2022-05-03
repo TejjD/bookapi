@@ -23,7 +23,7 @@ public class BookService {
         bookRepository.save(book);
     }
 
-    public Book getBookById(Integer id) {
-        return bookRepository.getById(id);
+    public Book getBooksByIsbn13(String isbn) {
+        return bookRepository.getBooksByIsbn13(isbn);
     }
 }

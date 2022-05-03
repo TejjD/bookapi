@@ -2,7 +2,10 @@ package com.absa.bookapi.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDate;
 
 @Entity
@@ -11,43 +14,38 @@ import java.time.LocalDate;
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "book_id", nullable = false)
-    private Integer id;
+    @Column(name = "isbn13", length = 13, nullable = false)
+    private String isbn13;
 
     @Column(name = "title", length = 400)
     private String title;
-
-    @Column(name = "isbn13", length = 13)
-    private String isbn13;
 
     @Column(name = "num_pages")
     private Integer numPages;
 
     @Column(name = "publication_date")
-    private LocalDate publicationDate;
+    public LocalDate publicationDate;
 
     @Column(name = "price")
     private float price;
 
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Publisher.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "publisher_id")
-    private Publisher publisher;
+    @Column(name = "publisher_name")
+    private String publisherName;
 
     public float getPrice() {
         return price;
     }
 
+    public String getPublisherName() {
+        return publisherName;
+    }
+
+    public void setPublisherName(String publisherName) {
+        this.publisherName = publisherName;
+    }
+
     public void setPrice(float price) {
         this.price = price;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getTitle() {
@@ -82,12 +80,5 @@ public class Book {
         this.publicationDate = publicationDate;
     }
 
-    public Publisher getPublisher() {
-        return publisher;
-    }
-
-    public void setPublisher(Publisher publisher) {
-        this.publisher = publisher;
-    }
 
 }

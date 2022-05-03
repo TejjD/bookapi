@@ -30,7 +30,7 @@ public class RetrieveOrdersService {
 
         List<RetrieveOrder> ordersList = new ArrayList<>();
         List<Order> orderIds = orderRepository.getOrders();
-        List<Integer> bookIds;
+        List<String> bookIds;
         List<Book> bookList = new ArrayList<>();
 
         for (Order order : orderIds) {
@@ -38,14 +38,15 @@ public class RetrieveOrdersService {
             bookList.clear();
             bookIds = orderItemRepository.getBooksForOrderId(order.getId());
 
-            for (int bookId : bookIds) {
-                bookList.add(bookRepository.getBooksByBookId(bookId));
+            for (String bookId : bookIds) {
+                bookList.add(bookRepository.getBooksByIsbn13(bookId));
             }
 
             currentOrder.setId(order.getId());
             currentOrder.setOrderDate(order.getOrderDate());
             currentOrder.setCustomerId(order.getCustomerId());
             currentOrder.setBooks(bookList);
+
             if (order.getTotal() != null)
                 currentOrder.setTotal(order.getTotal());
             ordersList.add(currentOrder);

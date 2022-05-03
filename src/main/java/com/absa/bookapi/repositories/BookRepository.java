@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BookRepository extends JpaRepository<Book, Integer> {
 
-    @Query(value = "SELECT * FROM book WHERE book.book_id = ?1",
+    @Query(value = "SELECT * FROM book WHERE book.isbn13 = ?1",
             nativeQuery = true)
-    Book getBooksByBookId(int bookId);
+    Book getBooksByIsbn13(String bookId);
 }

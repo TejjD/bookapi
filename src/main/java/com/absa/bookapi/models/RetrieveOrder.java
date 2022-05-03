@@ -1,13 +1,13 @@
 package com.absa.bookapi.models;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class RetrieveOrder {
 
     private Integer id;
 
-    private LocalDate orderDate;
+    private Date orderDate;
 
     private Integer customerId;
 
@@ -39,11 +39,11 @@ public class RetrieveOrder {
         this.id = id;
     }
 
-    public LocalDate getOrderDate() {
+    public Date getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(LocalDate orderDate) {
+    public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
     }
 

@@ -18,7 +18,7 @@ public class OrderItem {
     private Order orderId;
 
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Book.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "book_id")
+    @JoinColumn(name = "isbn13")
     private Book book;
 
     @Column(name = "quantity")
