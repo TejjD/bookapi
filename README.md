@@ -51,3 +51,46 @@ Run Docker Image
 ```
 sudo docker run --name=booksapi -p 8080:8080 -d booksapi p
 ```
+
+API Usage
+
+/api/v1/orders (POST) - Request Body
+
+```
+{
+    "orderDate": "2022-04-10",
+    "customerId": "16",
+    "books": {
+         "123123123ee2":2
+     }
+
+}
+```
+
+Response:
+
+```
+[
+   {
+      "total":425.96,
+      "books":[
+         {
+            "numPages":100,
+            "price":13.0,
+            "publisherName":"Tejas Dwarkaram",
+            "isbn13":"78we48748tg8",
+            "title":"How to do Spring Boot",
+            "publicationDate":{
+               "nanos":"2003-04-01"
+            }
+         }
+      ],
+      "customerId":1,
+      "id":1,
+      "orderDate":{
+         "nanos":"2002-04-05"
+      }
+   }
+]
+```
+
