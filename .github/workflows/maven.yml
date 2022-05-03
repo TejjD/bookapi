@@ -9,6 +9,13 @@ on:
   pull_request:
     branches: [ master ]
 
+
+env:
+  DB_HOST: 164.160.91.25
+  DB_PORT: 3306
+  DB_USER: thedevsc_tejas
+  DB_PASSWORD: books@apiadmin
+
 jobs:
   build:
 
