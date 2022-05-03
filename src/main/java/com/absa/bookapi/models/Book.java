@@ -6,7 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
@@ -24,7 +24,7 @@ public class Book {
     private Integer numPages;
 
     @Column(name = "publication_date")
-    public LocalDate publicationDate;
+    public Date publicationDate;
 
     @Column(name = "price")
     private float price;
@@ -72,11 +72,11 @@ public class Book {
         this.numPages = numPages;
     }
 
-    public LocalDate getPublicationDate() {
+    public Date getPublicationDate() {
         return publicationDate;
     }
 
-    public void setPublicationDate(LocalDate publicationDate) {
+    public void setPublicationDate(Date publicationDate) {
         this.publicationDate = publicationDate;
     }
 
