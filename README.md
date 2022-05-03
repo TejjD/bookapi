@@ -4,72 +4,50 @@ created book spring boot api
 
 Simple Book API to send order for books, and view orders for books. 
 
-Authentication Type: OAuth2 via GitHub
+Live GUI is available at: https://absa-test.kainode.com/
 
-Usage:
+API Specification available via Swagger: https://absa-test.kainode.com/swagger
 
-/api/v1/orders (POST)
+# Tech Stack
 
-**Request**
+## DB
 
-{
-    "orderDate": "2022-04-10",
-    "customerId": "16",
-    "books": {
-         "123123123ee2":2
-     }
-}
+The database is MySQL V. 5.6.43
 
-**Response**
+## Backend
 
-[
-   {
-      "total":18.88,
-      "books":[
-         {
-            "numPages":23,
-            "price":9.44,
-            "publisherName":"Tejas Dwarkaram",
-            "isbn13":"123123123ee2",
-            "title":"How to get a job at ABSA",
-            "publicationDate":{
-               "month":17584,
-               "year":2022
-            }
-         }
-      ],
-      "customerId":12,
-      "id":1,
-      "orderDate":{
-         "nanos":0
-      }
-]
+Backend is written in;
+ - SpringBoot V. 2.6.7
+ - Java 11
 
-/api/v1/orders (GET)
+## Frontend
 
-**Response**
+Frontend is written using Thymeleaf V. 2.6.7
 
-[
-   {
-      "numPages":23,
-      "price":9.44,
-      "publisherName":"Tejas Dwarkaram",
-      "isbn13":"123123123ee2",
-      "title":"How to get a job at ABSA",
-      "publicationDate":{
-         "month":17584,
-         "year":2022
-      }
-   },
-   {
-      "numPages":234,
-      "price":231.0,
-      "publisherName":"Publisher X",
-      "isbn13":"123123we234",
-      "title":"Spring Boot is Fun!",
-      "publicationDate":{
-         "month":17512,
-         "year":2010
-      }
-   }
-]
+## VCS 
+
+GitHub is used as VCS. GitHub action workflow for building the Maven project is also used. 
+
+## Deployment
+
+AWS EC2 instance was created using Ubuntu 20 LTS
+
+# Usage
+
+Build Maven Jar
+
+```
+mvn package
+```
+
+Build Docker Image
+
+```
+sudo docker build -t booksapi . 
+```
+
+Run Docker Image
+
+```
+sudo docker run --name=booksapi -p 8080:8080 -d booksapi p
+```
