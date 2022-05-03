@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.absa.bookapi.BookapiApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 24.858 s - in com.absa.bookapi.BookapiApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 26.4 s - in com.absa.bookapi.BookapiApplicationTests

@@ -13,14 +13,14 @@ public class DefaultController {
     @GetMapping("/")
     ResponseEntity<Void> redirectGui() {
         return ResponseEntity.status(HttpStatus.FOUND)
-                .location(URI.create("http://localhost:8080/home/"))
+                .location(URI.create("https://absa-test.kainode.com/home/"))
                 .build();
     }
 
     @GetMapping("/swagger")
     ResponseEntity<Void> redirectSwagger() {
         return ResponseEntity.status(HttpStatus.FOUND)
-                .location(URI.create("http://localhost:8080/swagger-ui.html#/"))
+                .location(URI.create("https://absa-test.kainode.com/swagger-ui.html#/"))
                 .build();
     }
 
