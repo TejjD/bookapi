@@ -31,11 +31,11 @@ public class RetrieveOrdersService {
         List<RetrieveOrder> ordersList = new ArrayList<>();
         List<Order> orderIds = orderRepository.getOrders();
         List<String> bookIds;
-        List<Book> bookList = new ArrayList<>();
 
         for (Order order : orderIds) {
             RetrieveOrder currentOrder = new RetrieveOrder();
-            bookList.clear();
+            List<Book> bookList = new ArrayList<>();
+
             bookIds = orderItemRepository.getBooksForOrderId(order.getId());
 
             for (String bookId : bookIds) {
