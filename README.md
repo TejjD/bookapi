@@ -4,10 +4,6 @@ created book spring boot api
 
 Simple Book API to send order for books, and view orders for books. 
 
-Live GUI is available at: https://absa-test.kainode.com/
-
-API Specification available via Swagger: https://absa-test.kainode.com/swagger
-
 # Tech Stack
 
 ## DB
